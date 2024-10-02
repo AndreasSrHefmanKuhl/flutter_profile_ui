@@ -210,12 +210,28 @@ class _ProfileState extends State<Profile> {
 }
 
 class Infoitem extends StatelessWidget {
-  const Infoitem({super.key});
+  const Infoitem(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.subtitle});
+  final Icon icon;
+  final Text title;
+  final Text subtitle;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(
+      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        icon,
+        SizedBox(
+          width: 25,
+        ),
+        Column(
+          children: [title, subtitle],
+        ),
+      ]),
+    );
   }
 }
 
