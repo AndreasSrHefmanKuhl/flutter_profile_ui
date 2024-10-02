@@ -176,115 +176,96 @@ class _ProfileState extends State<Profile> {
               left: 20.0,
               right: 20.0,
               child: Card(
-                  child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        child: Column(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          'Battles',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          "$counter",
-                          style: TextStyle(
-                            fontSize: 15.0,
+                        BattleBox(counter: counter),
+                        InfoBox(
+                          title: Text('Age'),
+                          subtitle: Text(
+                            '19 yrs',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
                           ),
-                        )
-                      ],
-                    )),
-                    Container(
-                      child: Column(children: [
-                        Text(
-                          'Birthday',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
                         ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          'April 7th',
-                          style: TextStyle(
-                            fontSize: 15.0,
+                        InfoBox(
+                          title: Text('Birthday'),
+                          subtitle: Text(
+                            '19 yrs',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
                           ),
-                        )
+                        ),
                       ]),
-                    ),
-                    Container(
-                        child: Column(
-                      children: [
-                        Text(
-                          'Age',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          '19 yrs',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ],
-                    )),
-                  ],
                 ),
-              )))
+              ))
         ],
       ),
     );
   }
 }
 
-class InfoItem extends StatelessWidget {
-  const InfoItem({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.details,
-  });
-  final Widget icon;
-  final String title;
-  final String details;
+class Infoitem extends StatelessWidget {
+  const Infoitem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+class BattleBox extends StatelessWidget {
+  const BattleBox({
+    super.key,
+    required this.counter,
+  });
+
+  final int counter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(
       children: [
-        icon,
-        SizedBox(
-          width: 20.0,
+        Text(
+          'Battles',
+          style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 15.0,
-              ),
-            ),
-            Text(
-              details,
-              style: TextStyle(
-                fontSize: 12.0,
-                color: Colors.grey[400],
-              ),
-            )
-          ],
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          "$counter",
+          style: TextStyle(
+            fontSize: 15.0,
+          ),
         )
       ],
+    ));
+  }
+}
+
+class InfoBox extends StatelessWidget {
+  const InfoBox({super.key, required this.title, required this.subtitle});
+
+  final Widget title;
+  final Widget subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(children: [
+        title,
+        SizedBox(
+          height: 5.0,
+        ),
+        subtitle,
+      ]),
     );
   }
 }
